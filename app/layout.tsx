@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Header from "@/app/components/Header";
+import Nav from "@/app/components/Nav";
+import GlobalStyle from "@/app/components/GlobalStyles";
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "CS303 URL Shortener",
@@ -21,12 +11,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode}>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
+    <html lang="en">
+    <GlobalStyle />
       <body>
         <Header />
+        <Nav />
+
+        {/*children = content of whatever page the user is visiting*/}
         {children}
       </body>
     </html>

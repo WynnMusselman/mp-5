@@ -1,11 +1,11 @@
-// import PostPreview from "@/app/components/PostPreview";
-// import getAllPosts from "@/lib/getAllPosts";
-// import PostsDisplay from "@/app/components/PostsDisplay";
+
+import URLInputForm from "@/app/components/URLInputForm";
 
 export default async function Home(){
-    // const posts = await getAllPosts();
 
     return (
-       <main></main>
+       <main>
+           <URLInputForm />
+       </main>
     );
 }
