@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Header from "@/app/components/Header";
 import Nav from "@/app/components/Nav";
 import GlobalStyle from "@/app/components/GlobalStyles";
+import styled from "styled-components";
 
+const TwoColLayout = styled.div`
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+`
 
 export const metadata: Metadata = {
   title: "CS303 URL Shortener",
@@ -14,11 +20,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <GlobalStyle />
-        <Header />
-        <Nav />
 
-        {/*children = content of whatever page the user is visiting*/}
-        {children}
+        <Header />
+
+        <TwoColLayout>
+            <Nav />
+            {/*children = content of whatever page the user is visiting*/}
+            {children}
+        </TwoColLayout>
+
       </body>
     </html>
   );
