@@ -13,7 +13,7 @@ const UlStyled = styled.ul`
 `;
 
 const LiStyled = styled.li`
-    margin: 4%;
+    margin: 10% 4%;
     border: 2px solid #AED9E0;
     text-align: center;
     padding: 2%;
@@ -27,10 +27,6 @@ const LinkStyled = styled(Link)`
     text-decoration: none;
     color: #AED9E0;
     font: calc(2px + 1.4vw) monospace;
-
-    &:hover {
-        color: #75adb6;
-    }
 `;
 
 

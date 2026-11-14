@@ -8,7 +8,11 @@ const TwoColLayout = styled.div`
     display: flex;
     flex-direction: row;
     min-height: 100vh;
-`
+`;
+
+const ChildPageWrapper = styled.div`
+    margin: 0 auto;
+`;
 
 export const metadata: Metadata = {
   title: "CS303 URL Shortener",
@@ -25,8 +29,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
         <TwoColLayout>
             <Nav />
-            {/*children = content of whatever page the user is visiting*/}
-            {children}
+            <ChildPageWrapper>
+                {/*children = content of whatever page the user is visiting*/}
+                {children}
+            </ChildPageWrapper>
         </TwoColLayout>
 
       </body>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const MainStyled = styled.main`
     width: 80%;
-    margin: 3%;
+    margin: auto 3%;
     text-align: center;
 `
 
@@ -32,7 +32,7 @@ const FormStyled = styled.form`
     flex-direction: column;
     text-align: left;
     
-    box-shadow: 0 5px rgb(0, 0, 0, 50%);
+    box-shadow: 0 5px rgb(0, 0, 0, 30%);
 `
 
 const LabelStyled = styled.label`
