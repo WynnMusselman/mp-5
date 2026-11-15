@@ -52,6 +52,7 @@ const InputStyled = styled.input`
     border-radius: 5px;
 `
 
+
 const ButtonStyled = styled.button`
     margin: 3%;
     font: calc(2px + 2vw) monospace;
@@ -59,10 +60,20 @@ const ButtonStyled = styled.button`
     border-radius: 5px;
 `
 
-const OutputStyled = styled.h3`
-    font: bold calc(5px + 2vw) monospace;
+const OutputWrapper = styled.div`
+    margin: 3%;
+`
+
+const OutputStyled = styled.a`
+    font: bold calc(3px + 2vw) monospace;
     color: #5E6472;
+    margin: 2%;
     box-shadow: 5px 5px #FAF3DD;
+    text-decoration: none;
+    
+    &:hover{
+        text-decoration: underline;
+    }
 `
 
 export default function URLInputForm(//{append, }: {append: (url: URLProps) => void;}
@@ -106,8 +117,10 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
                 <ButtonStyled type = "submit">Create Alias</ButtonStyled>
             </FormStyled>
 
-            <LabelStyled>Your new URL:</LabelStyled>
-            <OutputStyled><a href = "https://mp-5-shortener.vercel.app/{createdAlias}">https://mp-5-shortener.vercel.app/{createdAlias}</a></OutputStyled>
+            <OutputWrapper>
+                <LabelStyled>Your new URL:</LabelStyled>
+                <h3><OutputStyled href = "https://mp-5-shortener.vercel.app/{createdAlias}">https://mp-5-shortener.vercel.app/{createdAlias}</OutputStyled></h3>
+            </OutputWrapper>
         </MainStyled>
     )
 }
