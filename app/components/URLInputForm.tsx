@@ -56,6 +56,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 ){
     const [alias, setAlias] = useState("");
     const [url, setUrl] = useState("");
+    const [createdAlias, setCreatedAlias] = useState("");
 
     // clears the input boxes after they have been submitted
     function clearInput(){
@@ -75,6 +76,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
             <FormStyled onSubmit = {async (event) => {
                 event.preventDefault();
                 await createNewAlias(alias, url);
+                setCreatedAlias(alias);
                 clearInput();
             }}>
 
@@ -90,7 +92,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
             </FormStyled>
 
             <LabelStyled>Your new URL:</LabelStyled>
-            <h3>https://cs391-url-shortener.vercel.app/{alias}</h3>
+            <h3>https://cs391-url-shortener.vercel.app/{createdAlias}</h3>
         </MainStyled>
     )
 }
