@@ -1,6 +1,5 @@
 "use server"
 
-import {URLProps} from "@/type";
 import getCollection, {URL_COLLECTION} from "@/db";
 import {MongoServerError} from "mongodb";
 

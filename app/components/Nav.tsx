@@ -37,8 +37,7 @@ export default function Nav(){
         <NavStyled>
             <UlStyled>
                 <LiStyled><LinkStyled href = "/">Home</LinkStyled></LiStyled>
-                <LiStyled><LinkStyled href = "/about">About</LinkStyled></LiStyled>
-                <LiStyled><LinkStyled href = "/created-urls">Created URLS</LinkStyled></LiStyled>
+                <LiStyled><LinkStyled href = "/About">About</LinkStyled></LiStyled>
             </UlStyled>
         </NavStyled>
     )

@@ -12,6 +12,7 @@ const TwoColLayout = styled.div`
 
 const ChildPageWrapper = styled.div`
     margin: 0 auto;
+    width: 80%;
 `;
 
 export const metadata: Metadata = {
