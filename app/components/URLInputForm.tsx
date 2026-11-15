@@ -40,7 +40,14 @@ const FormStyled = styled.form`
 const LabelStyled = styled.label`
     font: bold calc(3px + 2vw) monospace;
     color: #34403A;
-    margin: 0 1%;
+    margin: 2% 1% 0 1%;
+`
+
+const OutputStyled = styled.h3`
+    font: bold calc(5px + 2vw) monospace;
+    color: #5E6472;
+    box-shadow: 5px 5px #FAF3DD;
+    
 `
 
 const InputStyled = styled.input`
@@ -98,7 +105,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
             </FormStyled>
 
             <LabelStyled>Your new URL:</LabelStyled>
-            <h3>https://cs391-url-shortener.vercel.app/{createdAlias}</h3>
+            <h3>https://mp-5-shortener.vercel.app/{createdAlias}</h3>
         </MainStyled>
     )
 }
