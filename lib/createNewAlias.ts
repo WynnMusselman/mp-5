@@ -8,6 +8,19 @@ export default async function createNewAlias(alias: string, url: string) {
     const formInput = {_id: alias, url: url}
     const urlCollection = await getCollection(URL_COLLECTION);
 
+    const invalid_chars = " <>{}[]|^`\\";
+    // if the url doesnt include https, then it's invalid
+    if(!formInput.url.includes("https://") && !formInput.url.includes("http://")){
+        return {error: "URL must contain https://"}
+    }
+
+    //if the url contains invalid characters
+    //https://www.reddit.com/r/learnjavascript/comments/oeegjn/is_there_a_way_to_determine_a_string_of/?captcha=1
+    else if([...invalid_chars].some((char) => formInput.url.includes(char))){
+        return {error: "URL cannot contain valid characters"}
+    }
+
+    // if there is a duplicate alias
     try{
         await urlCollection.insertOne({...formInput});
     }
@@ -20,20 +33,7 @@ export default async function createNewAlias(alias: string, url: string) {
         throw error;
     }
 
-    // if the url doesnt include https, then it's invalid
-    if(!formInput.url.includes("https://") || !formInput.url.includes("http://")){
-        return {error: "URL must contain https://"}
-    }
-
-    //if the url contains invalid characters
-    const invalid_chars = " <>{}[]|^`\\";
-    //https://www.reddit.com/r/learnjavascript/comments/oeegjn/is_there_a_way_to_determine_a_string_of/?captcha=1
-    if([...invalid_chars].some((char) => formInput.url.includes(char))){
-        return {error: "URL cannot contain valid characters"}
-    }
-
     //if there are no errors, the url can be created
-    await urlCollection.insertOne({...formInput});
     return {formInput};
 
 
