@@ -80,8 +80,7 @@ const OutputStyled = styled.a`
     }
 `
 
-export default function URLInputForm(//{append, }: {append: (url: URLProps) => void;}
-){
+export default function URLInputForm(){
     const [alias, setAlias] = useState("");
     const [url, setUrl] = useState("");
 
@@ -97,7 +96,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
         setUrl("");
     }
 
-    const aliasUrl = createdAlias ? `https://mp-5-shortener.vercel.app/${createdAlias}` : "";
+    const aliasUrl = `https://mp-5-shortener.vercel.app/${createdAlias}`;
 
     return(
         <MainStyled>
@@ -115,8 +114,10 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
                 setError("");
                 const result = await createNewAlias(alias, url);
 
-                if(!result.data) {
-                    setError(result.error ?? "Something went wrong");
+
+                // if there is an error, set the alias to nothing
+                if(result.error) {
+                    setError(result.error);
                     setCreatedAlias("");
                     return;
                 }

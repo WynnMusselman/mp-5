@@ -2,8 +2,9 @@
 
 import {URLProps} from "@/type";
 import getCollection, {URL_COLLECTION} from "@/db";
+import {MongoServerError} from "mongodb";
 
-export default async function createNewAlias(alias: string, url: string): Promise<URLProps> {
+export default async function createNewAlias(alias: string, url: string) {
     console.log("Creating new alias...");
     const formInput = {_id: alias, url: url}
     const urlCollection = await getCollection(URL_COLLECTION);
@@ -11,19 +12,15 @@ export default async function createNewAlias(alias: string, url: string): Promis
     try{
         await urlCollection.insertOne({...formInput});
     }
-    catch(err){
+    catch(error: unknown){
         //11000 = duplicate id
-        if(err.code === 11000){
+        //https://www.mongodb.com/docs/manual/reference/error-codes/
+        if(error instanceof MongoServerError && error.code === 11000){
             return {error: "Alias already in use. Please enter a unique alias"}
         }
-        throw err;
+        throw error;
     }
 
-    // const res = await urlCollection.insertOne({...formInput});
-    //
-    // if(!res.acknowledged) {
-    //     throw new Error("DB insert failed");
-    // }
 
     return {formInput};
 }
