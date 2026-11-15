@@ -56,6 +56,8 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 ){
     const [alias, setAlias] = useState("");
     const [url, setUrl] = useState("");
+
+    // saves the alias so the user can visit their new url
     const [createdAlias, setCreatedAlias] = useState("");
 
     // clears the input boxes after they have been submitted
@@ -82,11 +84,11 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 
                 {/*enter URL*/}
                 <LabelStyled htmlFor="url">URL:</LabelStyled>
-                <InputStyled type="text" id="url" value = {url} onChange={event => setUrl(event.target.value)}/>
+                <InputStyled required type="text" id="url" value = {url} onChange={event => setUrl(event.target.value)}/>
 
                 {/*enter alias for URL*/}
                 <LabelStyled htmlFor="alias">Alias:</LabelStyled>
-                <InputStyled type="text" id="alias" value = {alias} onChange={event => setAlias(event.target.value)}/>
+                <InputStyled required type="text" id="alias" value = {alias} onChange={event => setAlias(event.target.value)}/>
 
                 <button type = "submit">Create Alias</button>
             </FormStyled>
