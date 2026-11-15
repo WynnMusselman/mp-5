@@ -55,7 +55,7 @@ const InputStyled = styled.input`
 
 const ButtonStyled = styled.button`
     margin: 3%;
-    font: calc(2px + 1.4vw) arial;
+    font: calc(2px + 1.4vw) monospace;
     border: 1px solid #AED9E0;
     border-radius: 5px;
     background-color: #FFFFFFFF;
@@ -86,13 +86,18 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
     const [url, setUrl] = useState("");
 
     // saves the alias so the user can visit their new url
-    const [createdAlias, setCreatedAlias] = useState("");
+    const [createdAlias, setCreatedAlias] = useState("your-alias-here");
+
+    // for errors
+    const [error, setError] = useState("");
 
     // clears the input boxes after they have been submitted
     function clearInput(){
         setAlias("");
         setUrl("");
     }
+
+    const aliasUrl = createdAlias ? `https://mp-5-shortener.vercel.app/${createdAlias}` : "";
 
     return(
         <MainStyled>
@@ -105,7 +110,17 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 
             <FormStyled onSubmit = {async (event) => {
                 event.preventDefault();
-                await createNewAlias(alias, url);
+
+               //clears old error message
+                setError("");
+                const result = await createNewAlias(alias, url);
+
+                if(!result.data) {
+                    setError(result.error ?? "Something went wrong");
+                    setCreatedAlias("");
+                    return;
+                }
+
                 setCreatedAlias(alias);
                 clearInput();
             }}>
@@ -123,7 +138,10 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 
             <OutputWrapper>
                 <LabelStyled>Your new URL:</LabelStyled>
-                <h3><OutputStyled href = {`https://mp-5-shortener.vercel.app/${createdAlias}`}>https://mp-5-shortener.vercel.app/{createdAlias}</OutputStyled></h3>
+                <h3><OutputStyled href = {error ? undefined : aliasUrl}>
+                    {/*if there is an error, give an error message */}
+                    {error !== "" ? error : aliasUrl}
+                </OutputStyled></h3>
             </OutputWrapper>
         </MainStyled>
     )
