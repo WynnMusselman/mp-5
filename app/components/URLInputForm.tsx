@@ -61,8 +61,7 @@ const ButtonStyled = styled.button`
     background-color: #FFFFFFFF;
 
     &:hover {
-        background-color: #9fcae4;
-        font-style: italic;
+        background-color: #cbe5f4;
     }
 `
 
@@ -124,7 +123,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
 
             <OutputWrapper>
                 <LabelStyled>Your new URL:</LabelStyled>
-                <h3><OutputStyled href = "https://mp-5-shortener.vercel.app/{createdAlias}">https://mp-5-shortener.vercel.app/{createdAlias}</OutputStyled></h3>
+                <h3><OutputStyled href = {`https://mp-5-shortener.vercel.app/${createdAlias}`}>https://mp-5-shortener.vercel.app/{createdAlias}</OutputStyled></h3>
             </OutputWrapper>
         </MainStyled>
     )
