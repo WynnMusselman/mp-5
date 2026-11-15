@@ -1,6 +1,8 @@
 "use client"
 
 import styled from "styled-components";
+import {useState} from "react";
+import createNewAlias from "@/lib/createNewAlias";
 
 const MainStyled = styled.main`
     width: 80%;
@@ -50,18 +52,23 @@ const InputStyled = styled.input`
     border-radius: 5px;
 `
 
-export default function URLInputForm(){
+export default function URLInputForm({append, }: {append: (url: URLProps) => void;}){
+    const [alias, setAlias] = useState("");
+    const [url, setUrl] = useState("");
 
     return(
         <MainStyled>
 
-
+            {/*header for url*/}
             <TitleStyled>
                 <H2Styled>Shorten a URL</H2Styled>
                 <PStyled>Enter a long URL and create a shorter version of it with a custom alias</PStyled>
             </TitleStyled>
 
-            <FormStyled>
+            <FormStyled onSubmit = {async (event) => {
+                event.preventDefault();
+                createNewAlias(alias, url).then((newAlias) => append(newAlias)).catch((err) => console.error(err));
+            }}>
 
                 {/*enter URL*/}
                 <LabelStyled htmlFor="url">URL:</LabelStyled>
