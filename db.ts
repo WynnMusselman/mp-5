@@ -1,4 +1,6 @@
 import {MongoClient, Db, Collection} from "mongodb";
+import {URLProps} from "@/type";
+
 
 const MONGO_URI = process.env.MONGO_URI as string;
 if(!MONGO_URI) {
@@ -20,9 +22,11 @@ async function connect(): Promise<Db>{
     return client.db(DB_NAME)
 }
 
-export default async function getCollection(collectionName: string,): Promise<Collection>{
-        if(!db){
-            db = await connect();
-        }
-        return db.collection(collectionName);
+export default async function getCollection(collectionName: string): Promise<Collection<URLProps>>{
+    //if db exist, then it can be connected
+    if(!db){
+        db = await connect();
     }
+
+    return db.collection<URLProps>(collectionName);
+}
