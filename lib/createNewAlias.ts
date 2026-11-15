@@ -1,7 +1,7 @@
 "use server"
 
 import {URLProps} from "@/type";
-import {URL_COLLECTION} from "@/db";
+import getCollection, {URL_COLLECTION} from "@/db";
 
 export default async function createNewAlias(alias: string, url: string): Promise<URLProps> {
     console.log("Creating new alias...");
