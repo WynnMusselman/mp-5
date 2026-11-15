@@ -52,6 +52,10 @@ const InputStyled = styled.input`
     border-radius: 5px;
 `
 
+const ButtonStyled = styled.button`
+    margin: 3%;
+`
+
 export default function URLInputForm(//{append, }: {append: (url: URLProps) => void;}
 ){
     const [alias, setAlias] = useState("");
@@ -90,7 +94,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
                 <LabelStyled htmlFor="alias">Alias:</LabelStyled>
                 <InputStyled required type="text" id="alias" value = {alias} onChange={event => setAlias(event.target.value)}/>
 
-                <button type = "submit">Create Alias</button>
+                <ButtonStyled type = "submit">Create Alias</ButtonStyled>
             </FormStyled>
 
             <LabelStyled>Your new URL:</LabelStyled>
