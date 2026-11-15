@@ -43,13 +43,6 @@ const LabelStyled = styled.label`
     margin: 2% 1% 0 1%;
 `
 
-const OutputStyled = styled.h3`
-    font: bold calc(5px + 2vw) monospace;
-    color: #5E6472;
-    box-shadow: 5px 5px #FAF3DD;
-    
-`
-
 const InputStyled = styled.input`
     font: calc(2px + 1.4vw) monospace;
     padding: 0.5% 2%;
@@ -61,6 +54,15 @@ const InputStyled = styled.input`
 
 const ButtonStyled = styled.button`
     margin: 3%;
+    font: calc(2px + 2vw) monospace;
+    border: 1px solid #AED9E0;
+    border-radius: 5px;
+`
+
+const OutputStyled = styled.h3`
+    font: bold calc(5px + 2vw) monospace;
+    color: #5E6472;
+    box-shadow: 5px 5px #FAF3DD;
 `
 
 export default function URLInputForm(//{append, }: {append: (url: URLProps) => void;}
@@ -105,7 +107,7 @@ export default function URLInputForm(//{append, }: {append: (url: URLProps) => v
             </FormStyled>
 
             <LabelStyled>Your new URL:</LabelStyled>
-            <h3>https://mp-5-shortener.vercel.app/{createdAlias}</h3>
+            <OutputStyled><a href = "https://mp-5-shortener.vercel.app/{createdAlias}">https://mp-5-shortener.vercel.app/{createdAlias}</a></OutputStyled>
         </MainStyled>
     )
 }
