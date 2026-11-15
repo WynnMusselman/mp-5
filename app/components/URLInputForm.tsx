@@ -55,20 +55,25 @@ const InputStyled = styled.input`
 
 const ButtonStyled = styled.button`
     margin: 3%;
-    font: calc(2px + 2vw) monospace;
+    font: calc(2px + 1.4vw) arial;
     border: 1px solid #AED9E0;
     border-radius: 5px;
+    background-color: #FFFFFFFF;
+
+    &:hover {
+        background-color: #9fcae4;
+        font-style: italic;
+    }
 `
 
 const OutputWrapper = styled.div`
-    margin: 3%;
+    margin-top: 3%;
 `
 
 const OutputStyled = styled.a`
-    font: bold calc(3px + 2vw) monospace;
+    font: bold calc(2px + 2vw) monospace;
     color: #5E6472;
     margin: 2%;
-    box-shadow: 5px 5px #FAF3DD;
     text-decoration: none;
     
     &:hover{
